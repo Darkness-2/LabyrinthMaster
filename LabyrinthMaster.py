@@ -20,17 +20,24 @@ import sys
 
 def main():
     pygame.init()
-    DISPLAYSURF = pygame.display.set_mode((700, 500))
+    DISPLAYSURF = pygame.display.set_mode((400, 200))
     pygame.display.set_caption('Labyrinth Master')
     DISPLAYSURF.fill(GlobalVars.white)
     spamRect = pygame.Rect(10, 20, 200, 300)
     pygame.draw.rect(DISPLAYSURF, GlobalVars.blue, spamRect)
+    mapOver = True
     while True:
+        if mapOver == True:
+            mapOver = False
+            loadNewMap()
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
         pygame.display.update()
+
+def loadNewMap()
+    pass
 
 if __name__ == '__main__':
     main()
