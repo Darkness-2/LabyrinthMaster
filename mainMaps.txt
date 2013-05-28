@@ -1,12 +1,24 @@
-Level 1
-wwwwwwwwwwwwwwwwwwww
-wsooooooooooooooooow
-woooooooooooooooooow
-woooooooooooooooooow
-woooooooooooooooooow
-woooooooooooooooooow
-woooooooooooooooooow
-woooooooooooooooooow
-wooooooooooooooooogw
-wwwwwwwwwwwwwwwwwwww
+tLevel 1
+lwwwwwwwwwwwwwwwwwwww
+lwsooooooooooooooooow
+lwoooooooooooooooooow
+lwoooooooooooooooooow
+lwoooooooooooooooooow
+lwoooooooooooooooooow
+lwoooooooooooooooooow
+lwoooooooooooooooooow
+lwooooooooooooooooogw
+lwwwwwwwwwwwwwwwwwwww
+e
+tLevel 2
+lwwwwwwwwwwwwwwwwwwww
+lwsooooooooooooooooww
+lwoooooooooooooooooow
+lwoooooooooooooooooow
+lwoooooooooooooooooow
+lwoooooooooooooooooow
+lwoooooooooooooooooow
+lwoooooooooooooooooow
+lwooooooooooooooooogw
+lwwwwwwwwwwwwwwwwwwww
 e
