@@ -35,12 +35,16 @@ def main():
             if event.type == KEYDOWN:
                 if event.key == K_UP:
                     playerMovement('up', DISPLAYSURF)
+                    GlobalVars.moves += 1
                 elif event.key == K_DOWN:
                     playerMovement('down', DISPLAYSURF)
+                    GlobalVars.moves += 1
                 elif event.key == K_LEFT:
                     playerMovement('left', DISPLAYSURF)
+                    GlobalVars.moves += 1
                 elif event.key == K_RIGHT:
                     playerMovement('right', DISPLAYSURF)
+                    GlobalVars.moves += 1
         pygame.display.update()
 
 def playerMovement(direction, DISPLAYSURF):
@@ -88,21 +92,41 @@ def playerMovement(direction, DISPLAYSURF):
         if nextBlock[2] == 'w':
             wallFound = True
         elif nextBlock[2] == 'g':
-            goalFound = True
-            GlobalVars.mapOver = True
             GlobalVars.playerXValue = nextBlock[0]
             GlobalVars.playerYValue = nextBlock[1]
-            pygame.draw.rect(DISPLAYSURF, GlobalVars.yellow, (GlobalVars.playerXValue * 20, GlobalVars.playerYValue * 20, 20, 20))
-            pygame.draw.rect(DISPLAYSURF, GlobalVars.gray, (originalXValue * 20, originalYvalue * 20, 20, 20))
-            pygame.display.update()
-        elif nextBlock[2] == 'o':
+            if GlobalVars.playerKeys == GlobalVars.mapKeys:
+                goalFound = True
+                GlobalVars.mapOver = True
+                pygame.draw.rect(DISPLAYSURF, GlobalVars.yellow, (GlobalVars.playerXValue * 20, GlobalVars.playerYValue * 20, 20, 20))
+                pygame.draw.rect(DISPLAYSURF, GlobalVars.gray, (originalXValue * 20, originalYvalue * 20, 20, 20))
+                pygame.display.update()
+                pygame.time.delay(500)
+            else:
+                pygame.draw.rect(DISPLAYSURF, GlobalVars.red, (GlobalVars.playerXValue * 20, GlobalVars.playerYValue * 20, 20, 20))
+                pygame.draw.rect(DISPLAYSURF, GlobalVars.gray, (originalXValue * 20, originalYvalue * 20, 20, 20))
+                pygame.display.update()
+                pygame.time.delay(30)
+        elif nextBlock[2] == ' ':
             GlobalVars.playerXValue = nextBlock[0]
             GlobalVars.playerYValue = nextBlock[1]
-            pygame.draw.rect(DISPLAYSURF, GlobalVars.red, (GlobalVars.playerXValue * 20, GlobalVars.playerYValue * 20, 20, 20))
+            pygame.draw.rect(DISPLAYSURF, GlobalVars.blue, (GlobalVars.playerXValue * 20, GlobalVars.playerYValue * 20, 20, 20))
             pygame.draw.rect(DISPLAYSURF, GlobalVars.gray, (originalXValue * 20, originalYvalue * 20, 20, 20))
             pygame.display.update()
+            pygame.time.delay(30)
+        elif nextBlock[2] == 'k':
+            GlobalVars.playerXValue = nextBlock[0]
+            GlobalVars.playerYValue = nextBlock[1]
+            GlobalVars.mapArray[counter - 1] = [nextBlock[0], nextBlock[1], ' ']
+            GlobalVars.playerKeys += 1
+            if GlobalVars.playerKeys == GlobalVars.mapKeys:
+                pygame.draw.rect(DISPLAYSURF, GlobalVars.green, (GlobalVars.goalXValue, GlobalVars.goalYValue, 20, 20))
+            pygame.draw.rect(DISPLAYSURF, GlobalVars.blue, (GlobalVars.playerXValue * 20, GlobalVars.playerYValue * 20, 20, 20))
+            pygame.draw.rect(DISPLAYSURF, GlobalVars.gray, (originalXValue * 20, originalYvalue * 20, 20, 20))
+            pygame.display.update()
+            pygame.time.delay(30)
 
 def loadNewMap(maps, DISPLAYSURF):
+    del GlobalVars.mapArray[:]
     xValue = 0
     yValue = 0
     for line in maps:
@@ -118,24 +142,34 @@ def loadNewMap(maps, DISPLAYSURF):
                     pygame.draw.rect(DISPLAYSURF, GlobalVars.black, (xValue, yValue, 20, 20))
                     GlobalVars.mapArray.append([xValue / 20, yValue / 20, 'w'])
                     xValue += 20
-                elif letter == 'o':
+                elif letter == ' ':
                     pygame.draw.rect(DISPLAYSURF, GlobalVars.gray, (xValue, yValue, 20, 20))
-                    GlobalVars.mapArray.append([xValue / 20, yValue / 20, 'o'])
+                    GlobalVars.mapArray.append([xValue / 20, yValue / 20, ' '])
                     xValue += 20
                 elif letter == 's':
-                    pygame.draw.rect(DISPLAYSURF, GlobalVars.red, (xValue, yValue, 20, 20))
+                    pygame.draw.rect(DISPLAYSURF, GlobalVars.blue, (xValue, yValue, 20, 20))
                     GlobalVars.playerXValue = xValue / 20
                     GlobalVars.playerYValue = yValue / 20
-                    GlobalVars.mapArray.append([xValue / 20, yValue / 20, 'p'])
+                    GlobalVars.mapArray.append([xValue / 20, yValue / 20, ' '])
                     xValue += 20
                 elif letter == 'g':
-                    pygame.draw.rect(DISPLAYSURF, GlobalVars.green, (xValue, yValue, 20, 20))
+                    GlobalVars.goalXValue = xValue
+                    GlobalVars.goalYValue = yValue
                     GlobalVars.mapArray.append([xValue / 20, yValue / 20, 'g'])
                     xValue += 20
+                elif letter == 'k':
+                    pygame.draw.rect(DISPLAYSURF, GlobalVars.yellow, (xValue, yValue, 20, 20))
+                    GlobalVars.mapArray.append([xValue / 20, yValue / 20, 'k'])
+                    GlobalVars.mapKeys += 1
+                    xValue += 20
             yValue += 20
-            pygame.display.update()
         elif line[0] == 'e':
+            if GlobalVars.playerKeys == GlobalVars.mapKeys:
+                pygame.draw.rect(DISPLAYSURF, GlobalVars.green, (GlobalVars.goalXValue, GlobalVars.goalYValue, 20, 20))
+            else:
+                pygame.draw.rect(DISPLAYSURF, GlobalVars.red, (GlobalVars.goalXValue, GlobalVars.goalYValue, 20, 20))
             return
+            pygame.display.update()
 
 if __name__ == '__main__':
     main()

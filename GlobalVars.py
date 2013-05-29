@@ -13,9 +13,14 @@
 #-------------------------------------------------------------------------------
 
 #General------------------------------------------------------------------------
-mapTitle = ''
-mapOver = True
+goalXValue = 0
+goalYValue = 0
 mapArray = []
+mapKeys = 0
+mapOver = True
+mapTitle = ''
+moves = 0
+playerKeys = 0
 playerXValue = 0
 playerYValue = 0
 
