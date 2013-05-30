@@ -12,19 +12,18 @@
 #              http://creativecommons.org/licenses/by-nc-sa/3.0/.
 #-------------------------------------------------------------------------------
 
-import pygame
-from pygame.locals import *
-
 #General------------------------------------------------------------------------
 goalXValue = 0
 goalYValue = 0
 mainFont = None
 mapArray = []
 mapKeys = 0
+mapLinePosition = 0
 mapOver = False
 mapPackOver = False
 mapTitle = ''
 moves = 0
+numLines = 0
 playerKeys = 0
 playerXValue = 0
 playerYValue = 0

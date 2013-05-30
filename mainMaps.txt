@@ -22,4 +22,16 @@ lw  kw wwwww   w   ww
 lw kww         w   gw
 lwwwwwwwwwwwwwwwwwwww
 e
+tLevel 3
+lwwwwwwwwwwwwwwwwwwww
+lwkws               w
+lw wwwwwwwww wwwwww w
+lw w  k    w   w k  w
+lw w  k    w w     ww
+lw   wwwwwww wwwwwwww
+lw                 ww
+lw  wwwwwwwwwwwwww ww
+lwk wg             ww
+lwwwwwwwwwwwwwwwwwwww
+e
 m
