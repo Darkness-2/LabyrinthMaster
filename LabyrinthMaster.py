@@ -23,10 +23,36 @@ def main():
     pygame.init()
     DISPLAYSURF = pygame.display.set_mode((400, 200))
     pygame.display.set_caption('Labyrinth Master')
-    DISPLAYSURF.fill(GlobalVars.white)
+    DISPLAYSURF.fill(GlobalVars.black)
+    GlobalVars.mainFont = pygame.font.Font("freesansbold.ttf", 32)
+    GlobalVars.secondaryFont = pygame.font.Font("freesansbold.ttf", 16)
+    title = GlobalVars.mainFont.render("Labyrinth Master", 1,  GlobalVars.white)
+    DISPLAYSURF.blit(title, (62, 10))
+    lineOne = GlobalVars.secondaryFont.render("Controls: Arrow Keys", 1, GlobalVars.white)
+    DISPLAYSURF.blit(lineOne, (62, 70))
+    lineTwo = GlobalVars.secondaryFont.render("Rules: Collect all keys (yellow)", 1, GlobalVars.white)
+    DISPLAYSURF.blit(lineTwo, (62, 110))
+    lineThree = GlobalVars.secondaryFont.render("to open the goal(red/green)!", 1, GlobalVars.white)
+    DISPLAYSURF.blit(lineThree, (62, 130))
+    lineFour = GlobalVars.secondaryFont.render("Press any key to continue...", 1, GlobalVars.white)
+    DISPLAYSURF.blit(lineFour, (62, 170))
+    pygame.display.update()
+    keyPressed = False
+    while keyPressed == False:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == KEYDOWN:
+                keyPressed = True
+    loadNewMap(maps, DISPLAYSURF)
     while True:
         if GlobalVars.mapOver == True:
             GlobalVars.mapOver = False
+            movesLine = GlobalVars.secondaryFont.render("Moves: " + str(GlobalVars.moves), 1, GlobalVars.white)
+            DISPLAYSURF.blit(movesLine, (62, 90))
+            pygame.display.update()
+            pygame.time.delay(1000)
             loadNewMap(maps, DISPLAYSURF)
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -129,11 +155,12 @@ def loadNewMap(maps, DISPLAYSURF):
     del GlobalVars.mapArray[:]
     xValue = 0
     yValue = 0
+    GlobalVars.moves = 0
     for line in maps:
         line = line.strip()
         xValue = 0
         if line[0] == 't':
-            GlobalVars.mapTitle = line[1:]
+            GlobalVars.mapTitle = "Labyrinth Master - " + line[1:]
             pygame.display.set_caption(GlobalVars.mapTitle)
         elif line[0] == 'l':
             line = line[1:]
@@ -170,6 +197,10 @@ def loadNewMap(maps, DISPLAYSURF):
                 pygame.draw.rect(DISPLAYSURF, GlobalVars.red, (GlobalVars.goalXValue, GlobalVars.goalYValue, 20, 20))
             return
             pygame.display.update()
+        elif line[0] == 'm':
+            GlobalVars.mapPackOver = True
+            pygame.quit()
+            sys.exit()
 
 if __name__ == '__main__':
     main()

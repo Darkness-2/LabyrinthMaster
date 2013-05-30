@@ -1,24 +1,25 @@
 tLevel 1
 lwwwwwwwwwwwwwwwwwwww
 lws     wg www    www
-lwwwwww ww www ww   w
-lwk     ww     ww   w
+lwwwwww ww www ww  ww
+lwk     ww     ww w w
 lw wwww  wwwwwwww   w
 lw wwwww w  wwwwww ww
-lw wwwww w   wwww  ww
-lw wwwww w      ww  w
+lw wwwww w   wwwww ww
+lw wwwww w   wwwww  w
 lw                  w
 lwwwwwwwwwwwwwwwwwwww
 e
 tLevel 2
 lwwwwwwwwwwwwwwwwwwww
-lws                ww
-lw                  w
-lw                  w
-lw                  w
-lw                  w
-lw                  w
-lw                  w
-lw                 gw
+lwsw    ww         ww
+lw w ww wwww wwwww ww
+lw w ww wwww wwwww ww
+lw w ww  www wwwww ww
+lw       www wwwww ww
+lw w w    kw   w   ww
+lw  kw wwwww   w   ww
+lw kww         w   gw
 lwwwwwwwwwwwwwwwwwwww
 e
+m
